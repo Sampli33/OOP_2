@@ -1,8 +1,8 @@
 from NavalBattle_update import NavalBattle
 
 player1 = NavalBattle('#')
-player1.shot(6, 2)
-'''
+#player1.shot(6, 2)
+
 NavalBattle.playing_field = [[0, 1, 1, 1, 0, 0, 0, 0, 0, 1],
                              [0, 0, 0, 0, 0, 1, 0, 0, 0, 1],
                              [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
@@ -13,7 +13,6 @@ NavalBattle.playing_field = [[0, 1, 1, 1, 0, 0, 0, 0, 0, 1],
                              [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
                              [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                              [0, 0, 0, 1, 1, 0, 0, 1, 0, 0]]
-'''
 player1.shot(6, 2)
 player1.shot(6, 2)
 NavalBattle.show()

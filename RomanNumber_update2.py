@@ -1,7 +1,7 @@
 class RomanNumber:
     """
-    The `RomanNumber` class represents a Roman numeral and provides methods
-    to convert it to a decimal number and vice versa.
+    The `RomanNumber` class represents a Roman numeral and provides methods to convert it to a decimal number, vice versa,
+    and perform arithmetic operations with other RomanNumber objects.
 
     Attributes:
     int_value (int): The decimal value stored as an integer.
@@ -13,6 +13,13 @@ class RomanNumber:
     roman_number(): Converts the decimal number to a Roman numeral.
     is_int(value): Checks if the provided value is a valid integer for a Roman numeral conversion.
     is_roman(value): Checks if the provided value is a valid Roman numeral.
+    __add__(other): Adds two RomanNumber objects.
+    __sub__(other): Subtracts one RomanNumber object from another.
+    __mul__(other): Multiplies two RomanNumber objects.
+    __truediv__(other): Divides one RomanNumber object by another, returns the result as a RomanNumber object if possible.
+    __floordiv__(other): Divides one RomanNumber object by another, returns the integer division result as a RomanNumber object.
+    __mod__(other): Computes the modulo of two RomanNumber objects.
+    __pow__(other): Raises one RomanNumber object to the power of another.
     __str__(): Returns a string representation of the Roman numeral.
     __repr__(): Returns a string representation of the Roman numeral.
     """
@@ -22,8 +29,7 @@ class RomanNumber:
         Initializes a new `RomanNumber` object with the provided number.
 
         Parameters:
-        number (int or str): The number to be stored.
-        It can be an integer or a Roman numeral string.
+        number (int or str): The number to be stored. It can be an integer or a Roman numeral string.
         """
         if self.is_int(number):
             self.int_value = number
@@ -121,6 +127,99 @@ class RomanNumber:
                 if f'{value[i]}{value[i + 1]}' not in subtraction_rule:
                     return False
         return True
+
+    def __add__(self, other):
+        """
+        Adds two RomanNumber objects.
+
+        Parameters:
+        other (RomanNumber): The other RomanNumber object to add.
+
+        Returns:
+        RomanNumber: A new RomanNumber object representing the sum.
+        """
+        result = self.decimal_number() + other.decimal_number()
+        return RomanNumber(result)
+
+    def __sub__(self, other):
+        """
+        Subtracts one RomanNumber object from another.
+
+        Parameters:
+        other (RomanNumber): The other RomanNumber object to subtract.
+
+        Returns:
+        RomanNumber: A new RomanNumber object representing the difference.
+        """
+        result = self.decimal_number() - other.decimal_number()
+        return RomanNumber(result)
+
+    def __mul__(self, other):
+        """
+        Multiplies two RomanNumber objects.
+
+        Parameters:
+        other (RomanNumber): The other RomanNumber object to multiply.
+
+        Returns:
+        RomanNumber: A new RomanNumber object representing the product.
+        """
+        result = self.decimal_number() * other.decimal_number()
+        return RomanNumber(result)
+
+    def __truediv__(self, other):
+        """
+        Divides one RomanNumber object by another, returns the result as a RomanNumber object if possible.
+
+        Parameters:
+        other (RomanNumber): The other RomanNumber object to divide by.
+
+        Returns:
+        RomanNumber: A new RomanNumber object representing the division result.
+        """
+        result = self.decimal_number() / other.decimal_number()
+        if result == self.decimal_number() // other.decimal_number():
+            return RomanNumber(int(result))
+        return RomanNumber(result)
+
+    def __floordiv__(self, other):
+        """
+        Divides one RomanNumber object by another, returns the integer division result as a RomanNumber object.
+
+        Parameters:
+        other (RomanNumber): The other RomanNumber object to divide by.
+
+        Returns:
+        RomanNumber: A new RomanNumber object representing the integer division result.
+        """
+        result = self.decimal_number() // other.decimal_number()
+        return RomanNumber(result)
+
+    def __mod__(self, other):
+        """
+        Computes the modulo of two RomanNumber objects.
+
+        Parameters:
+        other (RomanNumber): The other RomanNumber object to compute the modulo with.
+
+        Returns:
+        RomanNumber: A new RomanNumber object representing the modulo result.
+        """
+        result = self.decimal_number() % other.decimal_number()
+        return RomanNumber(result)
+
+    def __pow__(self, other):
+        """
+        Raises one RomanNumber object to the power of another.
+
+        Parameters:
+        other (RomanNumber): The other RomanNumber object to raise to the power of.
+
+        Returns:
+        RomanNumber: A new RomanNumber object representing the power result.
+        """
+        result = self.decimal_number() ** other.decimal_number()
+        return RomanNumber(result)
 
     def __str__(self):
         """
